@@ -28,6 +28,7 @@ class ResultsPanel extends HTMLElement {
     this.status = this.shadowRoot.querySelector("#status");
 
     this.list.addEventListener("retry", this._onRetry);
+    this.empty.addEventListener("suggest", this._handleSuggest.bind(this));
     this.showEmpty();
   }
 
@@ -37,6 +38,16 @@ class ResultsPanel extends HTMLElement {
 
   _handleRetry() {
     this.dispatchEvent(new CustomEvent("retry", { bubbles: true, composed: true }));
+  }
+
+  _handleSuggest(event) {
+    this.dispatchEvent(
+      new CustomEvent("suggest", {
+        bubbles: true,
+        composed: true,
+        detail: event.detail,
+      }),
+    );
   }
 
   showEmpty() {

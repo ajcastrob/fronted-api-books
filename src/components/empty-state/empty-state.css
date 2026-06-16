@@ -2,10 +2,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.75rem;
+  gap: 0.85rem;
   padding: 3rem 1.5rem 1.5rem;
   text-align: center;
-  animation: fadeIn 0.6s ease both;
+  animation: fadeIn 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 :host([hidden]) {
@@ -15,8 +15,8 @@
 .empty-state__icon {
   width: 56px;
   height: 56px;
-  color: var(--color-accent, #c17f4f);
-  opacity: 0.25;
+  color: var(--color-fg-dim, #8f8372);
+  opacity: 0.45;
   margin-bottom: 0.25rem;
 }
 
@@ -35,11 +35,78 @@
 
 .empty-state__text {
   font-family: var(--font-body, "Crimson Pro", Georgia, serif);
-  font-size: 0.9rem;
+  font-size: 1.05rem;
   font-weight: 300;
+  font-style: italic;
   color: var(--color-fg-dim, #8f8372);
   max-width: 320px;
   line-height: 1.5;
+}
+
+.empty-state__hint {
+  font-family: var(--font-mono, "DM Mono", monospace);
+  font-size: 0.6rem;
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--color-fg-dim, #8f8372);
+  margin-top: 0.5rem;
+  opacity: 0.6;
+}
+
+.empty-state__suggestions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 0.25rem;
+  max-width: 420px;
+}
+
+.empty-state__chip {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.15rem;
+  padding: 0.55rem 0.9rem;
+  background: var(--color-surface, #191612);
+  border: 1px solid var(--color-border, #2d2822);
+  border-radius: var(--radius-md, 8px);
+  cursor: pointer;
+  transition:
+    border-color 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+    background 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.2s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  text-decoration: none;
+  font: inherit;
+}
+
+.empty-state__chip:hover {
+  border-color: var(--color-accent-gold, #cdaf72);
+  background: var(--color-surface-raised, #221f19);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px -6px rgba(0, 0, 0, 0.4);
+}
+
+.empty-state__chip:active {
+  transform: scale(0.97);
+}
+
+.chip__title {
+  font-family: var(--font-display, "Playfair Display", Georgia, serif);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-fg, #f5f0e8);
+  line-height: 1.2;
+}
+
+.chip__author {
+  font-family: var(--font-body, "Crimson Pro", Georgia, serif);
+  font-size: 0.65rem;
+  font-weight: 300;
+  font-style: italic;
+  color: var(--color-fg-dim, #8f8372);
 }
 
 @keyframes fadeIn {
@@ -50,5 +117,27 @@
 @media (prefers-reduced-motion: reduce) {
   :host {
     animation: none;
+  }
+
+  .empty-state__chip {
+    transition: none;
+  }
+}
+
+@media (max-width: 600px) {
+  :host {
+    padding: 2rem 1rem 1rem;
+  }
+
+  .empty-state__suggestions {
+    max-width: 100%;
+  }
+
+  .empty-state__chip {
+    padding: 0.4rem 0.7rem;
+  }
+
+  .chip__title {
+    font-size: 0.75rem;
   }
 }

@@ -1,33 +1,54 @@
-import { getBookByName } from "../api/api";
+import { getAllBooks, getBookByName } from "../api/api";
 import { getHint, isXIXCentury, normalizeQuery } from "../utils/literary";
 import "../components/search-form/search-form";
 import "../components/results-panel/results-panel";
+import "../components/literary-quote/literary-quote";
+import "../components/literary-overview/literary-overview";
 
 export class BookSearchApp {
   constructor(root = document.getElementById("app")) {
     this.root = root;
     this.searchForm = root.querySelector("search-form");
     this.resultsPanel = root.querySelector("results-panel");
+    this.overview = root.querySelector("#overview");
     this.colophon = root.querySelector("#colophon");
 
     this._onSearch = this._handleSearchEvent.bind(this);
     this._onRetry = this._handleRetry.bind(this);
+    this._onSuggest = this._handleSuggest.bind(this);
     this._onKeydown = this._handleKeydown.bind(this);
 
     this.searchForm.addEventListener("search", this._onSearch);
     this.resultsPanel.addEventListener("retry", this._onRetry);
+    this.resultsPanel.addEventListener("suggest", this._onSuggest);
     document.addEventListener("keydown", this._onKeydown);
 
     this.colophon.hidden = false;
+    this._loadOverview();
   }
 
   destroy() {
     this.searchForm.removeEventListener("search", this._onSearch);
     this.resultsPanel.removeEventListener("retry", this._onRetry);
+    this.resultsPanel.removeEventListener("suggest", this._onSuggest);
     document.removeEventListener("keydown", this._onKeydown);
   }
 
+  async _loadOverview() {
+    try {
+      const books = await getAllBooks();
+      this.overview?.setData(books);
+    } catch {
+      this.overview?.remove();
+    }
+  }
+
   _handleSearchEvent(event) {
+    this.search(event.detail.query);
+  }
+
+  _handleSuggest(event) {
+    this.searchForm.setQuery(event.detail.query);
     this.search(event.detail.query);
   }
 

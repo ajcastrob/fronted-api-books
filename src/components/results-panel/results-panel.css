@@ -33,8 +33,11 @@
 .status-message {
   display: block;
   text-align: center;
-  font-family: "DM Mono", monospace;
+  font-family: var(--font-mono, "DM Mono", monospace);
   font-size: 0.7rem;
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
   color: var(--color-fg-dim, #8f8372);
   padding: 0.5rem 0;
 }

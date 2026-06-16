@@ -1,5 +1,34 @@
 import styles from "./empty-state.css?inline";
 
+const suggestions = [
+  { title: "Oliver Twist", author: "Charles Dickens" },
+  { title: "Orgullo y prejuicio", author: "Jane Austen" },
+  { title: "Cumbres borrascosas", author: "Emily Brontë" },
+  { title: "El rojo y el negro", author: "Stendhal" },
+  { title: "Guerra y paz", author: "León Tolstói" },
+  { title: "La regenta", author: "Leopoldo Alas Clarín" },
+  { title: "Fortunata y Jacinta", author: "Benito Pérez Galdós" },
+  { title: "Madame Bovary", author: "Gustave Flaubert" },
+  { title: "Moby-Dick", author: "Herman Melville" },
+  { title: "Anna Karénina", author: "León Tolstói" },
+  { title: "Los tres mosqueteros", author: "Alejandro Dumas" },
+  { title: "El conde de Montecristo", author: "Alejandro Dumas" },
+];
+
+const picked = suggestions
+  .sort(() => Math.random() - 0.5)
+  .slice(0, 6);
+
+const chipsHTML = picked
+  .map(
+    (s) =>
+      `<button class="empty-state__chip" data-query="${s.title}" aria-label="Buscar ${s.title}">
+        <span class="chip__title">${s.title}</span>
+        <span class="chip__author">${s.author}</span>
+      </button>`,
+  )
+  .join("");
+
 const template = document.createElement("template");
 
 template.innerHTML = `
@@ -13,6 +42,8 @@ template.innerHTML = `
   </div>
   <p class="empty-state__title">Busca una novela del XIX</p>
   <p class="empty-state__text">Escribe el título o el autor para descubrir una obra del siglo de la novela</p>
+  <p class="empty-state__hint">O prueba con alguna de estas obras:</p>
+  <div class="empty-state__suggestions">${chipsHTML}</div>
 `;
 
 class EmptyState extends HTMLElement {
@@ -20,6 +51,17 @@ class EmptyState extends HTMLElement {
     super();
     this.attachShadow({ mode: "open" });
     this.shadowRoot.appendChild(template.content.cloneNode(true));
+  }
+
+  connectedCallback() {
+    this.shadowRoot.addEventListener("click", (e) => {
+      const chip = e.target.closest(".empty-state__chip");
+      if (!chip) return;
+      const query = chip.dataset.query;
+      this.dispatchEvent(
+        new CustomEvent("suggest", { bubbles: true, detail: { query } }),
+      );
+    });
   }
 }
 

@@ -70,6 +70,10 @@ class SearchForm extends HTMLElement {
     this.form?.reset();
   }
 
+  setQuery(value) {
+    if (this.input) this.input.value = value;
+  }
+
   setSubmitting(isSubmitting) {
     if (!this.submitBtn) return;
     this.submitBtn.classList.toggle("submitting", isSubmitting);

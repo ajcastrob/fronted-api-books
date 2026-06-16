@@ -8,6 +8,10 @@ template.innerHTML = `
     <div class="cover-section">
       <div class="book-cover">
         <img src="" alt="" loading="lazy" />
+        <div class="cover-placeholder" hidden>
+          <span class="cover-placeholder__ornament" aria-hidden="true">❦</span>
+          <span class="cover-placeholder__text">Portada no disponible</span>
+        </div>
       </div>
     </div>
     <div class="content">
@@ -138,18 +142,36 @@ class BookCard extends HTMLElement {
     const movementLine = card.querySelector(".movement-line");
     const eraBadge = card.querySelector(".era-badge");
 
-    img.src = this.getAttr("image");
+    const cover = card.querySelector(".book-cover");
+    const placeholder = card.querySelector(".cover-placeholder");
+    const imageUrl = this.getAttr("image");
+
+    cover.classList.remove("is-error");
+    img.hidden = false;
+    placeholder.hidden = true;
+    img.src = imageUrl;
     img.alt = this.getAttr("name");
     img.classList.remove("loaded");
 
-    const onLoad = () => img.classList.add("loaded");
-    const onError = () => {
-      img.src = "";
-      img.alt = "Portada no disponible";
+    const onLoad = () => {
       img.classList.add("loaded");
+      cover.classList.remove("is-error");
+      img.hidden = false;
+      placeholder.hidden = true;
     };
-    img.addEventListener("load", onLoad, { once: true });
-    img.addEventListener("error", onError, { once: true });
+    const onError = () => {
+      img.removeAttribute("src");
+      img.alt = "Portada no disponible";
+      img.hidden = true;
+      cover.classList.add("is-error");
+      placeholder.hidden = false;
+    };
+    if (!imageUrl) {
+      onError();
+    } else {
+      img.addEventListener("load", onLoad, { once: true });
+      img.addEventListener("error", onError, { once: true });
+    }
 
     title.textContent = this.getAttr("name");
     author.textContent = this.getAttr("author");
