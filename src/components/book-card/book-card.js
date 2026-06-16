@@ -86,9 +86,9 @@ class BookCard extends HTMLElement {
       const rect = card.getBoundingClientRect();
       const x = (e.clientX - rect.left) / rect.width;
       const y = (e.clientY - rect.top) / rect.height;
-      const rotY = -6 + (x - 0.5) * 8;
-      const rotX = 2 - (y - 0.5) * 6;
-      cover.style.setProperty("transform", `rotateY(${rotY}deg) rotateX(${rotX}deg)`);
+      const shiftX = (x - 0.5) * 6;
+      const shiftY = (y - 0.5) * 4;
+      cover.style.setProperty("transform", `translate(${shiftX}px, ${shiftY}px) scale(1.01)`);
       cover.classList.add("cursor-track");
     };
 
