@@ -1,0 +1,22 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "plugins": ["typescript", "unicorn", "oxc"],
+  "jsPlugins": ["oxlint-plugin-complexity"],
+  "categories": {
+    "correctness": "error"
+  },
+  "rules": {
+    "complexity/complexity": [
+      "warn",
+      {
+        "cyclomatic": 4,
+        "cognitive": 4
+      }
+    ]
+  },
+  "ignorePatterns": ["**/node_modules/**"],
+  "env": {
+    "es2024": true,
+    "builtin": true
+  }
+}
