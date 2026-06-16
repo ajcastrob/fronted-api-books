@@ -1,0 +1,71 @@
+:host {
+  display: block;
+  width: 100%;
+}
+
+.results-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2.5rem;
+}
+
+.results-list li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.results-list li.animate-in {
+  animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: var(--stagger-delay, 0s);
+}
+
+.results-list li.animate-out {
+  animation: pageFold 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: var(--stagger-delay, 0s);
+}
+
+.status-message {
+  display: block;
+  text-align: center;
+  font-family: "DM Mono", monospace;
+  font-size: 0.7rem;
+  color: #8f8372;
+  padding: 0.5rem 0;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pageFold {
+  from {
+    opacity: 1;
+    transform: perspective(1000px) rotateX(0deg) scaleY(1);
+    transform-origin: top center;
+  }
+  to {
+    opacity: 0;
+    transform: perspective(1000px) rotateX(8deg) scaleY(0.85);
+    transform-origin: top center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .results-list li.animate-in,
+  .results-list li.animate-out {
+    animation: none !important;
+  }
+}

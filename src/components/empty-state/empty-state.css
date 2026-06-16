@@ -1,0 +1,54 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 3rem 1.5rem 1.5rem;
+  text-align: center;
+  animation: fadeIn 0.6s ease both;
+}
+
+:host([hidden]) {
+  display: none;
+}
+
+.empty-state__icon {
+  width: 56px;
+  height: 56px;
+  color: #c17f4f;
+  opacity: 0.25;
+  margin-bottom: 0.25rem;
+}
+
+.empty-state__icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.empty-state__title {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #b8ad9c;
+  letter-spacing: -0.01em;
+}
+
+.empty-state__text {
+  font-family: "Crimson Pro", Georgia, serif;
+  font-size: 0.9rem;
+  font-weight: 300;
+  color: #8f8372;
+  max-width: 320px;
+  line-height: 1.5;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :host {
+    animation: none;
+  }
+}
