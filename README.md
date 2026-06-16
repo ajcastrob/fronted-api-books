@@ -51,7 +51,7 @@ src/
 
 ## Despliegue
 
-El proyecto está configurado para GitHub Pages con base `/books/`. Para publicar:
+El proyecto está configurado para GitHub Pages con base `/fronted-api-books/`. Para publicar:
 
 ```bash
 pnpm build

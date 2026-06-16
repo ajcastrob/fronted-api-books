@@ -3,7 +3,7 @@ import { standardCssModules } from "vite-plugin-standard-css-modules";
 
 export default defineConfig({
   root: "src",
-  base: "/books/",
+  base: "/fronted-api-books/",
   publicDir: "../public",
   plugins: [standardCssModules()],
   server: { port: 1234 },
