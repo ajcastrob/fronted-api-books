@@ -21,7 +21,12 @@
   width: 100%;
   height: 100%;
   border-radius: 50%;
-  background: radial-gradient(circle at 35% 35%, #c9a96e 0%, #1a1714 70%, transparent 100%);
+  background: radial-gradient(
+    circle at 35% 35%,
+    var(--color-accent-gold, #c9a96e) 0%,
+    var(--color-surface, #1a1714) 70%,
+    transparent 100%
+  );
   opacity: 0;
   filter: blur(2px);
   animation: inkDrop 1.7s ease-out infinite;
@@ -30,7 +35,12 @@
 .ink-blot:nth-child(2) {
   width: 70%;
   height: 70%;
-  background: radial-gradient(circle at 60% 40%, #c9a96e 0%, #1a1714 65%, transparent 100%);
+  background: radial-gradient(
+    circle at 60% 40%,
+    var(--color-accent-gold, #c9a96e) 0%,
+    var(--color-surface, #1a1714) 65%,
+    transparent 100%
+  );
   animation-delay: 0.35s;
   filter: blur(3px);
 }
@@ -38,7 +48,12 @@
 .ink-blot:nth-child(3) {
   width: 45%;
   height: 45%;
-  background: radial-gradient(circle at 45% 55%, #c9a96e 0%, #1a1714 60%, transparent 100%);
+  background: radial-gradient(
+    circle at 45% 55%,
+    var(--color-accent-gold, #c9a96e) 0%,
+    var(--color-surface, #1a1714) 60%,
+    transparent 100%
+  );
   animation-delay: 0.7s;
   filter: blur(4px);
 }
@@ -48,7 +63,7 @@
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: #c9a96e;
+  background: var(--color-accent-gold, #c9a96e);
   opacity: 0;
   animation: inkSplatter 1.7s ease-out infinite;
 }

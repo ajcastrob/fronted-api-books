@@ -15,7 +15,7 @@
 .empty-state__icon {
   width: 56px;
   height: 56px;
-  color: #c17f4f;
+  color: var(--color-accent, #c17f4f);
   opacity: 0.25;
   margin-bottom: 0.25rem;
 }
@@ -26,18 +26,18 @@
 }
 
 .empty-state__title {
-  font-family: "Playfair Display", Georgia, serif;
+  font-family: var(--font-display, "Playfair Display", Georgia, serif);
   font-size: 1.3rem;
   font-weight: 600;
-  color: #b8ad9c;
+  color: var(--color-fg-muted, #b8ad9c);
   letter-spacing: -0.01em;
 }
 
 .empty-state__text {
-  font-family: "Crimson Pro", Georgia, serif;
+  font-family: var(--font-body, "Crimson Pro", Georgia, serif);
   font-size: 0.9rem;
   font-weight: 300;
-  color: #8f8372;
+  color: var(--color-fg-dim, #8f8372);
   max-width: 320px;
   line-height: 1.5;
 }

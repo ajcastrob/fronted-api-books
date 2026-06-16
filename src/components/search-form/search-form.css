@@ -13,24 +13,25 @@
 
 .form input {
   padding: 0.75rem 1.2rem;
-  border: 1px solid #2a2520;
-  border-radius: 8px;
-  background: #1a1714;
-  color: #f5f0e8;
-  font-family: "Crimson Pro", Georgia, serif;
+  border: 1px solid var(--color-border, #2a2520);
+  border-radius: var(--radius-md, 8px);
+  background: var(--color-surface, #1a1714);
+  color: var(--color-fg, #f5f0e8);
+  font-family: var(--font-body, "Crimson Pro", Georgia, serif);
   font-size: 1rem;
   width: 300px;
-  transition: border-color 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: border-color 0.3s var(--ease-smooth, cubic-bezier(0.16, 1, 0.3, 1)),
+    box-shadow 0.3s var(--ease-smooth, cubic-bezier(0.16, 1, 0.3, 1));
 }
 
 .form input:focus {
   outline: none;
-  border-color: #c17f4f;
-  box-shadow: 0 0 0 2px #c17f4f33;
+  border-color: var(--color-accent, #c17f4f);
+  box-shadow: var(--shadow-focus, 0 0 0 2px #c17f4f33);
 }
 
 .form input::placeholder {
-  color: #8f8372;
+  color: var(--color-fg-dim, #8f8372);
   font-style: italic;
 }
 
@@ -39,22 +40,22 @@
   align-items: center;
   gap: 0.5rem;
   padding: 0.75rem 1.6rem;
-  border: 1px solid #c17f4f;
-  border-radius: 8px;
+  border: 1px solid var(--color-accent, #c17f4f);
+  border-radius: var(--radius-md, 8px);
   background: transparent;
-  color: #c17f4f;
-  font-family: "DM Mono", monospace;
+  color: var(--color-accent, #c17f4f);
+  font-family: var(--font-mono, "DM Mono", monospace);
   font-size: 0.75rem;
   font-weight: 400;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   cursor: pointer;
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.25s var(--ease-smooth, cubic-bezier(0.16, 1, 0.3, 1));
 }
 
 .form button:hover {
-  background: #c17f4f;
-  color: #0d0b09;
+  background: var(--color-accent, #c17f4f);
+  color: var(--color-bg, #0d0b09);
 }
 
 .form button:active {
@@ -62,22 +63,24 @@
 }
 
 .form:focus-within button {
-  border-color: #c17f4f;
-  background: #c17f4f;
-  color: #0d0b09;
-  box-shadow: 0 0 0 2px #c17f4f33;
+  border-color: var(--color-accent, #c17f4f);
+  background: var(--color-accent, #c17f4f);
+  color: var(--color-bg, #0d0b09);
+  box-shadow: var(--shadow-focus, 0 0 0 2px #c17f4f33);
 }
 
 .form button.submitting {
   transform: scale(0.96);
   opacity: 0.8;
-  transition: transform 0.15s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.15s ease;
+  transition: transform 0.15s var(--ease-spring, cubic-bezier(0.34, 1.56, 0.64, 1)),
+    opacity 0.15s ease;
 }
 
 .form button.settled {
   transform: scale(1);
   opacity: 1;
-  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.3s ease;
+  transition: transform 0.4s var(--ease-spring, cubic-bezier(0.34, 1.56, 0.64, 1)),
+    opacity 0.3s ease;
 }
 
 @media (max-width: 600px) {

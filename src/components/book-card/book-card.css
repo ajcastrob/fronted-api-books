@@ -2,16 +2,16 @@
   display: flex;
   justify-content: center;
   width: 100%;
-  animation: cardEnter 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation: cardEnter 0.6s var(--ease-smooth, cubic-bezier(0.16, 1, 0.3, 1)) both;
   animation-delay: var(--stagger-delay, 0s);
-  --gold: #c9a96e;
-  --gold-dim: #c9a96e66;
-  --surface: #1a1714;
-  --surface-light: #211e19;
-  --text: #f5f0e8;
-  --text-muted: #b8ad9c;
-  --text-dim: #8f8372;
-  --border: #2a2520;
+  --gold: var(--color-accent-gold, #c9a96e);
+  --gold-dim: rgba(201, 169, 110, 0.4);
+  --surface: var(--color-surface, #1a1714);
+  --surface-light: var(--color-surface-raised, #211e19);
+  --text: var(--color-fg, #f5f0e8);
+  --text-muted: var(--color-fg-muted, #b8ad9c);
+  --text-dim: var(--color-fg-dim, #8f8372);
+  --border: var(--color-border, #2a2520);
 }
 
 @keyframes cardEnter {
@@ -63,18 +63,18 @@
   width: min(64rem, 100%);
   margin-inline: auto;
   background: linear-gradient(145deg, var(--surface) 0%, #13110e 100%);
-  border: 1px solid #2a252088;
-  border-radius: 12px;
+  border: 1px solid rgba(42, 37, 32, 0.53);
+  border-radius: var(--radius-card, 12px);
   padding: 2rem;
   overflow: hidden;
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.4s var(--ease-smooth, cubic-bezier(0.16, 1, 0.3, 1));
 }
 
 .card::before {
   content: "";
   position: absolute;
   inset: 0;
-  border-radius: 12px;
+  border-radius: var(--radius-card, 12px);
   background: linear-gradient(
     160deg,
     rgba(201, 169, 110, 0.04) 0%,
@@ -87,18 +87,16 @@
 }
 
 .card:hover {
-  border-color: #2a2520cc;
+  border-color: rgba(42, 37, 32, 0.8);
   transform: translateY(-3px);
-  box-shadow:
-    0 20px 40px -12px rgba(0, 0, 0, 0.5),
-    0 0 0 1px rgba(201, 169, 110, 0.06);
+  box-shadow: var(--shadow-card-hover);
 }
 
 .card::after {
   content: "";
   position: absolute;
   inset: 0;
-  border-radius: 12px;
+  border-radius: var(--radius-card, 12px);
   opacity: 0;
   background: radial-gradient(
     600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
@@ -123,20 +121,18 @@
 .book-cover {
   position: relative;
   width: 100%;
-  border-radius: 8px;
+  border-radius: var(--radius-md, 8px);
   overflow: hidden;
   cursor: pointer;
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.4s var(--ease-smooth, cubic-bezier(0.16, 1, 0.3, 1));
 }
 
 .book-cover::after {
   content: "";
   position: absolute;
   inset: 0;
-  border-radius: 8px;
-  box-shadow:
-    inset 0 0 0 1px rgba(255, 255, 255, 0.06),
-    0 12px 32px -8px rgba(0, 0, 0, 0.55);
+  border-radius: var(--radius-md, 8px);
+  box-shadow: var(--shadow-cover-inner), var(--shadow-cover);
   pointer-events: none;
   z-index: 2;
 }
@@ -147,7 +143,7 @@
   height: auto;
   aspect-ratio: 1664 / 928;
   object-fit: contain;
-  border-radius: 8px;
+  border-radius: var(--radius-md, 8px);
   background: #0f0d0a;
   opacity: 0;
   transition: opacity 0.3s ease;
@@ -172,7 +168,7 @@
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  font-family: "DM Mono", monospace;
+  font-family: var(--font-mono, "DM Mono", monospace);
   font-size: 0.65rem;
   font-weight: 300;
   text-transform: uppercase;
@@ -192,7 +188,7 @@
   display: inline-flex;
   align-items: center;
   gap: 0.3rem;
-  font-family: "DM Mono", monospace;
+  font-family: var(--font-mono, "DM Mono", monospace);
   font-size: 0.55rem;
   font-weight: 300;
   text-transform: uppercase;
@@ -206,7 +202,7 @@
 }
 
 .movement-line {
-  font-family: "DM Mono", monospace;
+  font-family: var(--font-mono, "DM Mono", monospace);
   font-size: 0.6rem;
   font-weight: 300;
   color: var(--text-dim);
@@ -217,7 +213,7 @@
 .book-title {
   position: relative;
   overflow: hidden;
-  font-family: "Playfair Display", Georgia, serif;
+  font-family: var(--font-display, "Playfair Display", Georgia, serif);
   font-size: 2rem;
   font-weight: 700;
   color: var(--text);
@@ -233,14 +229,14 @@
   background: linear-gradient(90deg, transparent 0%, rgba(201, 169, 110, 0.1) 50%, transparent 100%);
   width: 200%;
   transform: translateX(-100%);
-  animation: goldSweep 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
+  animation: goldSweep 0.9s var(--ease-smooth, cubic-bezier(0.16, 1, 0.3, 1)) 0.3s forwards;
   pointer-events: none;
 }
 
 .book-author {
   position: relative;
   overflow: hidden;
-  font-family: "Crimson Pro", Georgia, serif;
+  font-family: var(--font-body, "Crimson Pro", Georgia, serif);
   font-size: 1.2rem;
   font-weight: 400;
   font-style: italic;
@@ -255,7 +251,7 @@
   background: linear-gradient(90deg, transparent 0%, rgba(201, 169, 110, 0.1) 50%, transparent 100%);
   width: 200%;
   transform: translateX(-100%);
-  animation: goldSweep 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.45s forwards;
+  animation: goldSweep 0.9s var(--ease-smooth, cubic-bezier(0.16, 1, 0.3, 1)) 0.45s forwards;
   pointer-events: none;
 }
 
@@ -284,7 +280,7 @@
   position: relative;
   overflow: hidden;
   max-height: 10rem;
-  transition: max-height 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: max-height 0.5s var(--ease-smooth, cubic-bezier(0.16, 1, 0.3, 1));
 }
 
 .book-description-wrapper::after {
@@ -294,7 +290,7 @@
   background: linear-gradient(90deg, transparent 0%, rgba(201, 169, 110, 0.08) 50%, transparent 100%);
   width: 200%;
   transform: translateX(-100%);
-  animation: goldSweep 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.6s forwards;
+  animation: goldSweep 0.9s var(--ease-smooth, cubic-bezier(0.16, 1, 0.3, 1)) 0.6s forwards;
   pointer-events: none;
 }
 
@@ -303,7 +299,7 @@
 }
 
 .book-description {
-  font-family: "Crimson Pro", Georgia, serif;
+  font-family: var(--font-body, "Crimson Pro", Georgia, serif);
   font-size: 1.2rem;
   font-weight: 300;
   color: var(--text-muted);
@@ -312,7 +308,7 @@
 }
 
 .book-description::first-letter {
-  font-family: "Playfair Display", Georgia, serif;
+  font-family: var(--font-display, "Playfair Display", Georgia, serif);
   font-size: 2.4em;
   font-weight: 700;
   color: var(--gold);
@@ -328,7 +324,7 @@
 }
 
 .desc-toggle {
-  font-family: "DM Mono", monospace;
+  font-family: var(--font-mono, "DM Mono", monospace);
   font-size: 0.6rem;
   font-weight: 400;
   color: var(--gold);
@@ -359,7 +355,7 @@
 }
 
 .book-cover.pop {
-  animation: popPress 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+  animation: popPress 0.45s var(--ease-spring, cubic-bezier(0.34, 1.56, 0.64, 1));
 }
 
 .card:hover .book-cover {
@@ -367,8 +363,7 @@
 }
 
 .card:hover .book-cover::after {
-  box-shadow:
-    inset 0 0 0 1px rgba(255, 255, 255, 0.08),
+  box-shadow: var(--shadow-cover-inner),
     0 16px 40px -8px rgba(0, 0, 0, 0.6);
 }
 

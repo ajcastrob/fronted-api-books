@@ -35,7 +35,7 @@
   text-align: center;
   font-family: "DM Mono", monospace;
   font-size: 0.7rem;
-  color: #8f8372;
+  color: var(--color-fg-dim, #8f8372);
   padding: 0.5rem 0;
 }
 

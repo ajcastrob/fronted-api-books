@@ -14,15 +14,15 @@
 .error-message__icon {
   width: 40px;
   height: 40px;
-  color: #c17f4f;
+  color: var(--color-accent, #c17f4f);
   opacity: 0.5;
 }
 
 .error-message__text {
-  font-family: "Crimson Pro", Georgia, serif;
+  font-family: var(--font-body, "Crimson Pro", Georgia, serif);
   font-size: 0.95rem;
   font-weight: 300;
-  color: #b8ad9c;
+  color: var(--color-fg-muted, #b8ad9c);
   max-width: 380px;
   line-height: 1.5;
 }
@@ -30,19 +30,19 @@
 .error-message__retry {
   margin-top: 0.5rem;
   padding: 0.5rem 1.2rem;
-  border: 1px solid #c17f4f;
-  border-radius: 8px;
+  border: 1px solid var(--color-accent, #c17f4f);
+  border-radius: var(--radius-md, 8px);
   background: transparent;
-  color: #c17f4f;
-  font-family: "DM Mono", monospace;
+  color: var(--color-accent, #c17f4f);
+  font-family: var(--font-mono, "DM Mono", monospace);
   font-size: 0.7rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   cursor: pointer;
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.25s var(--ease-smooth, cubic-bezier(0.16, 1, 0.3, 1));
 }
 
 .error-message__retry:hover {
-  background: #c17f4f;
-  color: #0d0b09;
+  background: var(--color-accent, #c17f4f);
+  color: var(--color-bg, #0d0b09);
 }
