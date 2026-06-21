@@ -20,9 +20,13 @@
   --radius-md: 4px;
   --radius-card: 12px;
 
+  --spacing-xs: 4px;
   --spacing-sm: 8px;
   --spacing-md: 16px;
-  --spacing-lg: 40px;
+  --spacing-lg: 32px;
+  --spacing-xl: 48px;
+  --spacing-2xl: 64px;
+  --spacing-section: clamp(3rem, 6vw, 5rem);
 
   --ease-smooth: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -153,7 +157,7 @@ body {
   height: 100vh;
   position: sticky;
   top: 0;
-  padding: 4rem;
+  padding: var(--spacing-xl);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -161,10 +165,16 @@ body {
   background: var(--color-bg);
 }
 
+.layout-main {
+  flex: 1;
+  min-width: 0;
+  padding: var(--spacing-xl) var(--spacing-2xl);
+}
+
 .header-content {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: var(--spacing-lg);
 }
 
 .header-flourish {
@@ -186,7 +196,7 @@ body {
   font-style: italic;
   color: var(--color-fg);
   line-height: 1.1;
-  margin-bottom: 2.5rem;
+  margin-bottom: var(--spacing-lg);
   letter-spacing: -0.02em;
 }
 
@@ -213,7 +223,7 @@ body {
   opacity: 0.3;
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: var(--spacing-md);
 }
 
 .aside-footer-line {
@@ -223,7 +233,7 @@ body {
 }
 
 .space-y-16 > * + * {
-  margin-top: 4rem;
+  margin-top: var(--spacing-xl);
 }
 
 /* Updated Scrollbar */
@@ -248,8 +258,17 @@ body {
 .colophon {
   display: flex;
   justify-content: center;
-  margin-top: 10px;
-  margin-bottom: 20px;
+  margin-top: var(--spacing-lg);
+  margin-bottom: var(--spacing-lg);
+}
+
+/* Section spacing in main content */
+.layout-main > * + * {
+  margin-top: var(--spacing-section);
+}
+
+.layout-main > results-panel + * {
+  margin-top: var(--spacing-2xl);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -274,12 +293,12 @@ body {
     width: 100%;
     height: auto;
     position: relative;
-    padding: 2.5rem 2rem;
+    padding: var(--spacing-lg) var(--spacing-md);
     border-right: none;
     border-bottom: 1px solid var(--color-border);
   }
   .layout-main {
     width: 100%;
-    padding: 2.5rem 2rem;
+    padding: var(--spacing-lg) var(--spacing-md);
   }
 }

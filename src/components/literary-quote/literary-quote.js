@@ -2,14 +2,14 @@ import styles from "./literary-quote.css?inline";
 
 const quotes = [
   {
-    text: "¿Qué es poesía?, dices mientras clavas en mi pupila tu pupila azul. ¿Qué es poesía? ¿Y me lo preguntas? Poesía... eres tú.",
-    author: "Gustavo Adolfo Bécquer",
-    source: "Rima XXI",
+    text: "Era el mejor de los tiempos, era el peor de los tiempos; la época de la sabiduría y la época de la bobería...",
+    author: "Charles Dickens",
+    source: "Historia de dos ciudades",
   },
   {
-    text: "No hay camino para la paz, la paz es el camino.",
-    author: "Mahatma Gandhi",
-    source: "1914",
+    text: "Llamandme Ismael. Hace unos años -no importa cuánto hace exactamente-, teniendo poco o ningún dinero en el bolsillo, y nada en particular que me interesara en tierra, pensé que me iría a navegar un poco por ahí...",
+    author: "Herman Melville",
+    source: "Moby Dick",
   },
   {
     text: "Era un hombre que no podía ver a un niño sin levantarlo en el aire y besarle la cara.",
@@ -27,9 +27,9 @@ const quotes = [
     source: "Rojo y negro",
   },
   {
-    text: "El que con niños se acuesta, huesos de piojo le quedan.",
-    author: "Proverbio del XIX",
-    source: "Refranero",
+    text: "Una tarde extramadamente calurosa de principios de julio, un joven salió de la reducida habitación que tenía alquilada en la callejuela de S, y con paso lento e indeciso, se dirigió al puente K.",
+    author: "Fiodor Dostoewski",
+    source: "Crimen y castigo",
   },
 ];
 

@@ -1,23 +1,21 @@
 import styles from "./empty-state.css?inline";
 
 const suggestions = [
-  { title: "Oliver Twist", author: "Charles Dickens" },
+  { title: "Moby Dick", author: "Herman Melville" },
   { title: "Orgullo y prejuicio", author: "Jane Austen" },
   { title: "Cumbres borrascosas", author: "Emily Brontë" },
   { title: "El rojo y el negro", author: "Stendhal" },
-  { title: "Guerra y paz", author: "León Tolstói" },
-  { title: "La regenta", author: "Leopoldo Alas Clarín" },
-  { title: "Fortunata y Jacinta", author: "Benito Pérez Galdós" },
+  { title: "La Guerra y la paz", author: "León Tolstói" },
+  { title: "Frankenstein", author: "Mary Shelley" },
+  { title: "La Cartuja de Parma", author: "Stendhal" },
   { title: "Madame Bovary", author: "Gustave Flaubert" },
-  { title: "Moby-Dick", author: "Herman Melville" },
-  { title: "Anna Karénina", author: "León Tolstói" },
-  { title: "Los tres mosqueteros", author: "Alejandro Dumas" },
+  { title: "Tess of the d'Urbervilles", author: "Thomas Hardy" },
+  { title: "Anna Karenina", author: "León Tolstói" },
+  { title: "Notas del subsuelo", author: "Fiódor Dostoievski" },
   { title: "El conde de Montecristo", author: "Alejandro Dumas" },
 ];
 
-const picked = suggestions
-  .sort(() => Math.random() - 0.5)
-  .slice(0, 6);
+const picked = suggestions.sort(() => Math.random() - 0.5).slice(0, 6);
 
 const chipsHTML = picked
   .map(
