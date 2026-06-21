@@ -1,66 +1,54 @@
 :host {
-  display: block;
-  text-align: center;
-  padding: 1.5rem 1rem 0.5rem;
+  display: flex;
+  justify-content: center;
+  flex-direction: column-reverse;
+  align-items: center;
+  padding: 4rem 0;
   animation: fadeIn 0.8s ease both;
   animation-delay: 0.3s;
 }
 
 .quote {
-  font-family: var(--font-display, "Playfair Display", Georgia, serif);
-  font-size: 1.15rem;
+  font-family: var(--font-display);
+  font-size: 1.5rem;
   font-weight: 400;
   font-style: italic;
-  color: var(--color-fg-muted, #b8ad9c);
-  line-height: 1.55;
-  max-width: 420px;
-  margin: 0 auto;
+  text-align: center;
+  color: var(--color-fg-muted);
+  line-height: 1.6;
+  max-width: 500px;
+  margin: 0;
   letter-spacing: -0.005em;
 }
 
-.quote::before {
-  content: "\201C";
-  color: var(--color-accent-gold, #c9a96e);
-  font-size: 1.6em;
-  line-height: 0;
-  vertical-align: -0.12em;
-  margin-right: 0.08em;
-  opacity: 0.5;
-}
-
-.quote::after {
-  content: "\201D";
-  color: var(--color-accent-gold, #c9a96e);
-  font-size: 1.6em;
-  line-height: 0;
-  vertical-align: -0.12em;
-  margin-left: 0.04em;
-  opacity: 0.5;
-}
-
 .attribution {
-  margin-top: 0.5rem;
-  font-family: var(--font-mono, "DM Mono", monospace);
-  font-size: 0.6rem;
-  font-weight: 300;
+  margin-top: 1rem;
+  font-family: var(--font-mono);
+  font-size: 10px;
   text-transform: uppercase;
-  letter-spacing: 0.18em;
-  color: var(--color-fg-dim, #8f8372);
-  opacity: 0.6;
+  letter-spacing: 0.2em;
+  color: var(--color-accent);
+  opacity: 0.5;
 }
 
 .ornament {
   display: block;
-  font-size: 0.8rem;
-  color: var(--color-accent-gold, #c9a96e);
-  opacity: 0.25;
-  margin-top: 0.6rem;
+  font-size: 1rem;
+  color: var(--color-accent-gold);
+  opacity: 0.15;
+  margin-top: 1.5rem;
   line-height: 1;
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(6px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

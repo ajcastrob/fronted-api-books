@@ -4,24 +4,27 @@ const template = document.createElement("template");
 
 template.innerHTML = `
   <style>${styles}</style>
-  <form class="form" part="form" aria-label="Búsqueda de novelas del siglo XIX">
-    <input
-      type="text"
-      id="search-input"
-      name="name"
-      placeholder="Ej: orgullo y prejuicio, frankenstein..."
-      required
-      autocomplete="off"
-      aria-label="Nombre del libro"
-    />
-    <button type="submit" id="search-submit" aria-label="Buscar libro">
-      <span>Buscar</span>
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <circle cx="11" cy="11" r="8"></circle>
-        <path d="m21 21-4.35-4.35"></path>
-      </svg>
-    </button>
-  </form>
+  <div class="search-container">
+    <label class="label">Entrada del Archivo</label>
+    <form class="form" part="form" aria-label="Búsqueda de novelas del siglo XIX">
+      <input
+        type="text"
+        id="search-input"
+        name="name"
+        placeholder="Autor, título o corriente..."
+        required
+        autocomplete="off"
+        aria-label="Nombre del libro"
+      />
+      <button type="submit" id="search-submit" aria-label="Buscar libro">
+        <span>Buscar</span>
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="11" cy="11" r="8"></circle>
+          <path d="m21 21-4.35-4.35"></path>
+        </svg>
+      </button>
+    </form>
+  </div>
 `;
 
 class SearchForm extends HTMLElement {

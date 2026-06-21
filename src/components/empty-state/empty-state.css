@@ -2,10 +2,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.85rem;
-  padding: 3rem 1.5rem 1.5rem;
+  gap: 1.5rem;
+  padding: 4rem 2rem;
   text-align: center;
-  animation: fadeIn 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: fadeIn 1s var(--ease-smooth) both;
 }
 
 :host([hidden]) {
@@ -13,131 +13,83 @@
 }
 
 .empty-state__icon {
-  width: 56px;
-  height: 56px;
-  color: var(--color-fg-dim, #8f8372);
-  opacity: 0.45;
-  margin-bottom: 0.25rem;
-}
-
-.empty-state__icon svg {
-  width: 100%;
-  height: 100%;
+  width: 48px;
+  height: 48px;
+  color: var(--color-accent);
+  opacity: 0.3;
 }
 
 .empty-state__title {
-  font-family: var(--font-display, "Playfair Display", Georgia, serif);
-  font-size: 1.3rem;
-  font-weight: 600;
-  color: var(--color-fg-muted, #b8ad9c);
-  letter-spacing: -0.01em;
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-style: italic;
+  color: var(--color-fg);
+  margin-bottom: -0.5rem;
 }
 
 .empty-state__text {
-  font-family: var(--font-body, "Crimson Pro", Georgia, serif);
-  font-size: 1.05rem;
-  font-weight: 300;
+  font-family: var(--font-body);
+  font-size: 1.125rem;
   font-style: italic;
-  color: var(--color-fg-dim, #8f8372);
-  max-width: 320px;
-  line-height: 1.5;
+  color: var(--color-fg-muted);
+  max-width: 400px;
+  opacity: 0.6;
 }
 
 .empty-state__hint {
-  font-family: var(--font-mono, "DM Mono", monospace);
-  font-size: 0.6rem;
-  font-weight: 300;
+  font-family: var(--font-mono);
+  font-size: 10px;
   text-transform: uppercase;
-  letter-spacing: 0.18em;
-  color: var(--color-fg-dim, #8f8372);
-  margin-top: 0.5rem;
-  opacity: 0.6;
+  letter-spacing: 0.3em;
+  color: var(--color-accent);
+  margin-top: 2rem;
+  opacity: 0.4;
 }
 
 .empty-state__suggestions {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 0.5rem;
-  margin-top: 0.25rem;
-  max-width: 420px;
+  gap: 1rem;
+  margin-top: 1rem;
+  max-width: 500px;
 }
 
 .empty-state__chip {
+  padding: 0.75rem 1.25rem;
+  background: var(--color-surface);
+  border: 1px dashed var(--color-border);
+  cursor: pointer;
+  transition: all 0.4s var(--ease-smooth);
+  text-align: left;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 0.15rem;
-  padding: 0.55rem 0.9rem;
-  background: var(--color-surface, #191612);
-  border: 1px solid var(--color-border, #2d2822);
-  border-radius: var(--radius-md, 8px);
-  cursor: pointer;
-  transition:
-    border-color 0.3s cubic-bezier(0.22, 1, 0.36, 1),
-    background 0.3s cubic-bezier(0.22, 1, 0.36, 1),
-    transform 0.2s cubic-bezier(0.22, 1, 0.36, 1),
-    box-shadow 0.3s cubic-bezier(0.22, 1, 0.36, 1);
-  text-decoration: none;
-  font: inherit;
+  gap: 0.25rem;
 }
 
 .empty-state__chip:hover {
-  border-color: var(--color-accent-gold, #cdaf72);
-  background: var(--color-surface-raised, #221f19);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px -6px rgba(0, 0, 0, 0.4);
-}
-
-.empty-state__chip:active {
-  transform: scale(0.97);
+  border-style: solid;
+  border-color: var(--color-accent);
+  transform: translateY(-4px);
+  background: var(--color-surface-raised);
 }
 
 .chip__title {
-  font-family: var(--font-display, "Playfair Display", Georgia, serif);
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: var(--color-fg, #f5f0e8);
-  line-height: 1.2;
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  font-style: italic;
+  color: var(--color-fg);
 }
 
 .chip__author {
-  font-family: var(--font-body, "Crimson Pro", Georgia, serif);
-  font-size: 0.65rem;
-  font-weight: 300;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
   font-style: italic;
-  color: var(--color-fg-dim, #8f8372);
+  color: var(--color-fg-muted);
+  opacity: 0.6;
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  :host {
-    animation: none;
-  }
-
-  .empty-state__chip {
-    transition: none;
-  }
-}
-
-@media (max-width: 600px) {
-  :host {
-    padding: 2rem 1rem 1rem;
-  }
-
-  .empty-state__suggestions {
-    max-width: 100%;
-  }
-
-  .empty-state__chip {
-    padding: 0.4rem 0.7rem;
-  }
-
-  .chip__title {
-    font-size: 0.75rem;
-  }
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
 }

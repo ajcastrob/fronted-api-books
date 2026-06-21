@@ -46,20 +46,20 @@ function mergeBooks(books, genres, characters, bookGenres, bookCharacters) {
   const genreNames = new Map(genres.map((g) => [g.id, g.name]));
   const charNames = new Map(characters.map((c) => [c.id, c.name]));
 
-  const grouped = (arr, idKey, nameMap) => {
+  const grouped = (arr, idKey, nameKey, nameMap) => {
     const map = groupById(arr, (x) => x[idKey]);
     const result = new Map();
     for (const [bookId, entries] of map) {
       result.set(
         bookId,
-        entries.map((e) => nameMap.get(e[`${idKey.replace("book_", "")}_id`])).filter(Boolean),
+        entries.map((e) => nameMap.get(e[nameKey])).filter(Boolean),
       );
     }
     return result;
   };
 
-  const bookGenreMap = grouped(bookGenres, "book_id", genreNames);
-  const bookCharMap = grouped(bookCharacters, "book_id", charNames);
+  const bookGenreMap = grouped(bookGenres, "book_id", "genre_id", genreNames);
+  const bookCharMap = grouped(bookCharacters, "book_id", "character_id", charNames);
 
   return books.map((b) => ({
     ...b,

@@ -83,7 +83,11 @@ class ResultsPanel extends HTMLElement {
 
     li.appendChild(card);
     this.list.appendChild(li);
-    li.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    
+    // Smooth scroll only if not the first result to avoid jumping on initial load
+    if (this.list.children.length > 1) {
+      li.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    }
   }
 
   setStatus(text) {

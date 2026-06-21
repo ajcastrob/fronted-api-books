@@ -10,42 +10,67 @@
       href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&family=Crimson+Pro:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Mono:wght@300;400&display=swap"
       rel="stylesheet"
       media="print"
-      onload="this.media='all'"
+      onload="this.media = 'all'"
     />
     <link rel="stylesheet" href="./styles/global.css" />
     <script type="module" src="main.js"></script>
     <title>Novelas del siglo XIX — El siglo de la novela</title>
-    <meta name="description" content="Explora las grandes novelas del siglo XIX, el siglo de la novela. Dickens, Austen, Dostoyevsky, Tolstoy, Galdós y más." />
+    <meta
+      name="description"
+      content="Explora las grandes novelas del siglo XIX, el siglo de la novela. Dickens, Austen, Dostoyevsky, Tolstoy, Galdós y más."
+    />
   </head>
   <body>
-    <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
-
     <div id="app">
-      <header class="header">
-        <p class="header__eyebrow">El siglo de la novela</p>
-        <h1 class="header__title">Novelas del XIX</h1>
-        <p class="header__subtitle">
-          Las obras fundamentales de la literatura universal publicadas entre 1800 y 1899
-        </p>
-      </header>
+      <aside class="layout-aside">
+        <div class="space-y-16">
+          <div class="header-content">
+            <img
+              src="https://cdn.jsdelivr.net/npm/game-icons-transparent@latest/svgs/delapouite/fleur-de-lys.svg"
+              class="header-flourish"
+              alt=""
+              aria-hidden="true"
+            />
+            <header class="header">
+              <h1 class="header__title">
+                Novelas <br />
+                <span class="header__title-accent">del XIX</span>
+              </h1>
+              <p class="header__subtitle">
+                "Un registro digital de la prosa decimonónica..."
+              </p>
+            </header>
+          </div>
 
-      <search-form></search-form>
+          <search-form></search-form>
+        </div>
 
-      <main id="main-content" aria-label="Resultados de búsqueda">
+        <div class="aside-footer">
+          <span class="aside-footer-line"></span>
+          MMXXVI — Registro de la Academia
+        </div>
+      </aside>
+
+      <main
+        class="layout-main"
+        id="main-content"
+        aria-label="Resultados de búsqueda"
+      >
         <results-panel></results-panel>
+
+        <literary-overview id="overview"></literary-overview>
+
+        <literary-quote></literary-quote>
+
+        <footer class="colophon" id="colophon" hidden>
+          <span class="colophon__ornament">❦</span>
+        </footer>
       </main>
-
-      <literary-overview id="overview"></literary-overview>
-
-      <literary-quote></literary-quote>
-
-      <footer class="colophon" id="colophon" hidden>
-        <span class="colophon__ornament">❦</span>
-        <p class="colophon__text">Novelas del siglo XIX · Playfair Display &amp; Crimson Pro</p>
-      </footer>
     </div>
 
+    <div class="parchment-overlay" aria-hidden="true"></div>
     <div class="paper" aria-hidden="true"></div>
     <div class="grain" aria-hidden="true"></div>
   </body>
 </html>
+
