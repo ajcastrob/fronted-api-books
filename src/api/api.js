@@ -1,7 +1,6 @@
 const apiURL = "https://api-books-vqyf.onrender.com/books";
-const supabaseURL = "https://puedckltjxreqijohdkb.supabase.co";
-const supabaseKey =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InB1ZWRja2x0anhyZXFpam9oZGtiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODE0NzUxNjYsImV4cCI6MjA5NzA1MTE2Nn0.8Os3mJ52xxDLtK4vUMuoh5_hKMX7A0xx8j0n8d8rzoo";
+const supabaseURL = import.meta.env.VITE_SUPABASE_URL;
+const supabaseKey = import.meta.env.VITE_SUPABASE_KEY;
 
 const supabaseHeaders = {
   apikey: supabaseKey,
