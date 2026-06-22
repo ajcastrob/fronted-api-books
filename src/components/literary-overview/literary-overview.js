@@ -1,4 +1,5 @@
 import styles from "./literary-overview.css?inline";
+import { groupById } from "../../api/api";
 
 const DECADE_START = 1810;
 const DECADE_END = 1890;
@@ -50,16 +51,6 @@ function countBy(arr, keyFn) {
     if (key) counts[key] = (counts[key] || 0) + 1;
   }
   return counts;
-}
-
-function groupById(items, keyFn) {
-  const map = new Map();
-  for (const item of items) {
-    const id = keyFn(item);
-    if (!map.has(id)) map.set(id, []);
-    map.get(id).push(item);
-  }
-  return map;
 }
 
 function topEntry(counts) {
@@ -268,13 +259,6 @@ class LiteraryOverview extends HTMLElement {
       </div>
     `;
 
-    this.dispatchEvent(
-      new CustomEvent("book-select", {
-        bubbles: true,
-        composed: true,
-        detail: { book },
-      })
-    );
   }
 
   _clearSelection() {

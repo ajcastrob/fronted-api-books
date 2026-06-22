@@ -32,7 +32,7 @@ async function supabaseQuery(table, params = "") {
   return res.json();
 }
 
-function groupById(items, keyFn) {
+export function groupById(items, keyFn) {
   const map = new Map();
   for (const item of items) {
     const id = keyFn(item);

@@ -101,47 +101,6 @@ body {
   background-size: 200px 200px;
 }
 
-/* Brass Corners Utility */
-.brass-corner {
-  position: relative;
-}
-
-.brass-corner::before,
-.brass-corner::after {
-  content: "";
-  position: absolute;
-  width: 20px;
-  height: 20px;
-  border: 1px solid var(--color-gold);
-  pointer-events: none;
-  z-index: 10;
-}
-
-.brass-corner-tl::before {
-  top: 0;
-  left: 0;
-  border-right: 0;
-  border-bottom: 0;
-}
-.brass-corner-tr::after {
-  top: 0;
-  right: 0;
-  border-left: 0;
-  border-bottom: 0;
-}
-.brass-corner-bl::before {
-  bottom: 0;
-  left: 0;
-  border-right: 0;
-  border-top: 0;
-}
-.brass-corner-br::after {
-  bottom: 0;
-  right: 0;
-  border-left: 0;
-  border-top: 0;
-}
-
 #app {
   width: 100%;
   min-height: 100vh;

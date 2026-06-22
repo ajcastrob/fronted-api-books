@@ -27,13 +27,6 @@ export class BookSearchApp {
     this._loadOverview();
   }
 
-  destroy() {
-    this.searchForm.removeEventListener("search", this._onSearch);
-    this.resultsPanel.removeEventListener("retry", this._onRetry);
-    this.resultsPanel.removeEventListener("suggest", this._onSuggest);
-    document.removeEventListener("keydown", this._onKeydown);
-  }
-
   async _loadOverview() {
     try {
       const books = await getAllBooks();

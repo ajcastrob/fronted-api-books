@@ -1,5 +1,5 @@
 import styles from "./results-panel.css?inline";
-import { mapBookToCardAttrs } from "../../utils/book-mapper";
+import { getLiteraryMovement } from "../../utils/literary";
 import "../book-card/book-card";
 import "../book-loader/book-loader";
 import "../book-error/book-error";
@@ -65,7 +65,7 @@ class ResultsPanel extends HTMLElement {
   showError(message, hint) {
     this.empty.hidden = true;
     this.status.textContent = "";
-    this.list.innerHTML = `<li><book-error message="${this._escapeAttr(message)}" hint="${this._escapeAttr(hint)}"></book-error></li>`;
+    this.list.innerHTML = `<li><book-error message="${String(message).replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;")}" hint="${String(hint).replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;")}"></book-error></li>`;
   }
 
   showBook(book) {
@@ -76,7 +76,14 @@ class ResultsPanel extends HTMLElement {
     li.classList.add("animate-in");
 
     const card = document.createElement("book-card");
-    const attrs = mapBookToCardAttrs(book);
+    const year = book.year;
+    const attrs = {
+      name: book.name,
+      author: book.author,
+      year: String(year),
+      image: book.image,
+      movement: getLiteraryMovement(year),
+    };
     for (const [key, value] of Object.entries(attrs)) {
       card.setAttribute(key, value);
     }
@@ -115,12 +122,6 @@ class ResultsPanel extends HTMLElement {
     last.addEventListener("animationend", handler);
   }
 
-  _escapeAttr(value) {
-    return String(value)
-      .replace(/&/g, "&amp;")
-      .replace(/"/g, "&quot;")
-      .replace(/</g, "&lt;");
-  }
 }
 
 customElements.define("results-panel", ResultsPanel);

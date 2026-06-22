@@ -24,11 +24,10 @@ class BookCard extends HTMLElement {
     super();
     this.attachShadow({ mode: "open" });
     this.shadowRoot.appendChild(template.content.cloneNode(true));
-    this._cursorBound = false;
   }
 
   static get observedAttributes() {
-    return ["name", "author", "year", "description", "image", "movement", "era"];
+    return ["name", "author", "year", "image", "movement"];
   }
 
   connectedCallback() {
